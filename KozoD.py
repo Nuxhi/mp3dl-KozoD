@@ -1,6 +1,10 @@
 from pytube import YouTube
 from pytube import Playlist
 from pytube import Search
+
+import urllib.request
+import re
+
 import os
 import time
 
@@ -12,7 +16,7 @@ def main():
     print("               ║                              ║")
     print("               ║     X. Search on youtube     ║")
     print("               ║                              ║")
-    print("               ║     1. Download Clip [Beta]  ║")
+    print("               ║     1. Download Clip [LowQ]  ║")
     print("               ║                              ║")
     print("               ║     2. Download Audio        ║")
     print("               ║                              ║")
@@ -36,15 +40,37 @@ def main():
 
 
 
-
 def search():
-    s = Search('YouTube Rewind')
-    print(len(s.results))
-    time.sleep(5)
+    name = input('nom de la recherche : ').replace(" ","+")
+    html = urllib.request.urlopen("https://www.youtube.com/results?search_query="+name)
+    video_ids = re.findall(r"watch\?v=(\S{11})", html.read().decode())
+    #print(video_ids)
+    lien = "https://www.youtube.com/watch?v="+video_ids[0]
+    video = YouTube(lien)
 
-    print(s.results)
-    time.sleep(25)
+    print('\n | '"https://www.youtube.com/watch?v="+video_ids[0])
+    print(' | chaine :', video.author,)
+    print(' | vue :', video.views,)
+    print(' | titre :', video.title,)
+    print(' | size :', video.captions,)
+    print("\n voulez vous télécharger la video ?\n 'oui' // 'non'")
+    choix = input('\nVotre choix : ')
+
+    if choix == 'oui':
+        lien = "https://www.youtube.com/watch?v="+video_ids[0]
+        video = YouTube(lien)
+        streams = video.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc()
+        streams[0].download()
+        print(' | size :', video.captions,)
+        time.sleep(10)
+        main()
     
+    if choix == '/audio':
+        lien = "https://www.youtube.com/watch?v="+video_ids[0]
+        video = YouTube(lien)
+        audio = video.streams.filter(only_audio=True, file_extension='mp4').first()
+        audio.download()
+        main()
     main()
 
 
@@ -56,14 +82,17 @@ def clip_dl():
         os.system("cls")
 
         print('Get information / [ 2/3 ] \n')
-        print(' | chaine :', video.author, ' |')
-        print(' | vue :', video.views, ' |')
-        print(' | titre :', video.title, ' |')
+        print(' | Chaine :', video.author,)
+        print(' | Vue :', video.views,)
+        print(' | Titre :', video.title,)
+        print(' | Miniature :', video.thumbnail_url,)
 
         streams = video.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc()
+        #streams = video.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc()
+        # res='720p', fps='60fps',
         print(' [ CLEAN ]  [ 2/3 ]\n\n')
-
         print('Download in progress / [ 3/3 ]')
+        
         streams[0].download()
         time.sleep(1)
         print('Download Completed!')
@@ -73,7 +102,6 @@ def clip_dl():
         print("Connection Error")
         time.sleep(1)
         main()
-
 
 
 
@@ -139,6 +167,8 @@ def playlist_dl_clip_audio():
 
     lien = input('lien : ')
     p = Playlist(lien)
+    print(p.title, 'contient', len(p), 'musiques ')
+    
     print(f'Downloading: {p.title}')
     for video in p.videos:
         video.streams.first().download()
