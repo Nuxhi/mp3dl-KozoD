@@ -8,6 +8,8 @@ import re
 import os
 import time
 
+import shutil
+
 def main():
     destination = "/home/balasundar/Downloads/"
     os.system("cls")
@@ -63,6 +65,13 @@ def search():
         streams[0].download()
         print(' | size :', video.captions,)
         time.sleep(10)
+        #make author folder
+        if not os.path.exists(video.author):
+            os.makedirs(video.author)
+        #move video to author folder
+        shutil.move('/Users/FABIE/Desktop/KozoDownload-main/'+video.title+'.mp4', '/Users/FABIE/Desktop/KozoDownload-main/'+video.author+'/'+video.title+'.mp4')
+        #shutil.move('/Users/FABIE/Desktop/KozoDownload-main/PNL - Deux Frères [Clip Officiel].mp4', '/Users/FABIE/Desktop/KozoDownload-main/PNL/PNL - Deux Frères [Clip Officiel].mp4')
+        
         main()
     
     if choix == '/audio':
