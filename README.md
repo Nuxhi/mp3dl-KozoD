@@ -1,7 +1,7 @@
 # KozoDF
-.🦞 KozoD - KozoVideoDownloader- Utilitaire python permettant de télécharger des clips vidéo ou audio de YouTube 
-.🐛 Use Python 3
-.🔑 Pytube Lib
+K |🦞 KozoD - KozoVideoDownloader- Utilitaire python permettant de télécharger des clips vidéo ou audio de YouTube 
+V | 🐛 Use Python 3
+D | 🔑 Pytube Lib
 
 
 🍇 | features : 
