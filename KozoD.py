@@ -1,3 +1,10 @@
+#Made by Nuxhi#4601
+#Made in France
+#All rights reserved to Nuxhi, no modified copy of KozoD is allowed, if you wish to contradict the development contact me here:
+
+#Discord : Nuxhi#4601
+#In the menu, done "/Nuxhi" for more information
+
 from pytube import YouTube
 from pytube import Playlist
 from pytube import Search
@@ -46,7 +53,7 @@ def search():
     name = input('nom de la recherche : ').replace(" ","+")
     html = urllib.request.urlopen("https://www.youtube.com/results?search_query="+name)
     video_ids = re.findall(r"watch\?v=(\S{11})", html.read().decode())
-    #print(video_ids)
+    #print(video_ids) - NUXHI#4601
     lien = "https://www.youtube.com/watch?v="+video_ids[0]
     video = YouTube(lien)
 
@@ -65,12 +72,12 @@ def search():
         streams[0].download()
         print(' | size :', video.captions,)
         time.sleep(10)
-        #make author folder
+        #make author folder - NUXHI#4601
         if not os.path.exists(video.author):
             os.makedirs(video.author)
         #move video to author folder
         shutil.move('/Users/FABIE/Desktop/KozoDownload-main/'+video.title+'.mp4', '/Users/FABIE/Desktop/KozoDownload-main/'+video.author+'/'+video.title+'.mp4')
-        #shutil.move('/Users/FABIE/Desktop/KozoDownload-main/PNL - Deux Frères [Clip Officiel].mp4', '/Users/FABIE/Desktop/KozoDownload-main/PNL/PNL - Deux Frères [Clip Officiel].mp4')
+        #shutil.move('/Users/NUXHI#4601/Desktop/KozoDownload-main/PNL - Deux Frères [Clip Officiel].mp4', '/Users/NUXHI#4601/Desktop/KozoDownload-main/PNL/PNL - Deux Frères [Clip Officiel].mp4')
         
         main()
     
@@ -188,3 +195,8 @@ def playlist_dl_clip_audio():
 
 if __name__ == "__main__":
     main()
+
+
+#Made by Nuxhi#4601
+#Made in France
+#All rights reserved to Nuxhi, no modified copy of KozoD is allowed, if you wish to contradict the development contact me here:
