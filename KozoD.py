@@ -2,6 +2,8 @@
 #Made in France
 #All rights reserved to Nuxhi, no modified copy of KozoD is allowed, if you wish to contradict the development contact me here:
 
+#KozoD-V1.0.1
+
 #Discord : Nuxhi#4601
 #In the menu, done "/Nuxhi" for more information
 
