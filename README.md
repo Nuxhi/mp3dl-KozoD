@@ -8,15 +8,14 @@
 
            🎉 First launch :
            For compatibility issues, run the install.cmd file to install all the add-ons and / or update them
-           For recurring launches, Launch the KozoD.py file
+           For recurring launches, Launch the KozoD.py file                   
+                                 
+⚠️ | Warning : 
+
            ⚠️ Please note, if your documents are automatically saved in your OneDrive, KozoD may not work
            - To verify : 
-           ✔️ C:\Users\YourUserName\Documents\ ✔️
-           ❌ C:\Users\YourUserName\OneDrive\Documents\ ❌
-                      
-                    
-                                 
-
+           ✔️ C:\Users\YourUserName\Documents\
+           ❌ C:\Users\YourUserName\OneDrive\Documents\
 
 
 🍇 | features : 
