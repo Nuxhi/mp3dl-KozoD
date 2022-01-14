@@ -17,11 +17,22 @@ import time
 
 import shutil
 
+import getpass
+#source : https://stackoverflow.com/questions/842059/is-there-a-portable-way-to-get-the-current-username-in-python
+
+os.system( "KozoVideoDownloader - Nuxhi#4601" )
+username = getpass.getuser()
+
 def main():
+    os.chdir("C:/Users/" + username+ "/Documents")
+    if not os.path.exists("KozoD"):
+        os.makedirs("KozoD")
+    
     destination = "/home/balasundar/Downloads/"
+    
     os.system("cls")
     print("\n\n")
-    print("               ╔══════════════════════════════╗")
+    print("               ╔═══════════--KozoD--══════════╗")
     print("               ║                              ║")
     print("               ║     X. Search on youtube     ║")
     print("               ║                              ║")
@@ -66,19 +77,17 @@ def search():
     choix = input('\nVotre choix : ')
 
     if choix == 'oui':
+        os.chdir("C:/Users/"+username+"/Documents/KozoD")
+        if not os.path.exists(video.author):
+            os.makedirs(video.author)
+            os.chdir("C:/Users/"+username+"/Documents/KozoD/"+video.author)
+
         lien = "https://www.youtube.com/watch?v="+video_ids[0]
         video = YouTube(lien)
         streams = video.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc()
         streams[0].download()
         print(' | size :', video.captions,)
-        time.sleep(10)
-        #make author folder - NUXHI#4601
-        if not os.path.exists(video.author):
-            os.makedirs(video.author)
-        #move video to author folder
-        shutil.move('/Users/FABIE/Desktop/KozoDownload-main/'+video.title+'.mp4', '/Users/FABIE/Desktop/KozoDownload-main/'+video.author+'/'+video.title+'.mp4')
-        #shutil.move('/Users/NUXHI#4601/Desktop/KozoDownload-main/PNL - Deux Frères [Clip Officiel].mp4', '/Users/NUXHI#4601/Desktop/KozoDownload-main/PNL/PNL - Deux Frères [Clip Officiel].mp4')
-        
+        #make author folder - NUXHI#4601 
         main()
     
     if choix == '/audio':
