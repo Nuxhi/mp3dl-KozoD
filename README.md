@@ -31,3 +31,5 @@
 
            - A debugging campaign will be launched, once it is launched.
            All the instructions will be indicated here, we invite you to help us with your bug reports
+           
+           - Contact : Nuxhi#4601 [https://discord.com/]
