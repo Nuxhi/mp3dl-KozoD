@@ -14,10 +14,13 @@ from pytube import Search
 import urllib.request
 import re
 
+import sys
 import os
 import time
 
 import shutil
+
+
 
 import getpass
 #source : https://stackoverflow.com/questions/842059/is-there-a-portable-way-to-get-the-current-username-in-python
@@ -26,6 +29,8 @@ os.system( "KozoVideoDownloader - Nuxhi#4601" )
 username = getpass.getuser()
 
 def main():
+    sys.stdout.write("\x1b[8;{rows};{cols}t".format(rows=20, cols=60))
+    #source : https://stackoverflow.com/questions/6418678/resize-the-terminal-with-python
     os.chdir("C:/Users/" + username+ "/Documents")
     if not os.path.exists("KozoD"):
         os.makedirs("KozoD")
