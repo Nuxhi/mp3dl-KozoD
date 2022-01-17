@@ -59,6 +59,10 @@ def main():
     
     if choix =='3':
         playlist_dl()
+    else:
+        print("Error - Return to main page")
+        time.sleep(2)
+        main()
 
 
 
@@ -98,7 +102,10 @@ def search():
         audio = video.streams.filter(only_audio=True, file_extension='mp4').first()
         audio.download()
         main()
-    main()
+    else:
+        print("Error - Return to main page")
+        time.sleep(2)
+        main()
 
 
 def clip_dl():
@@ -180,6 +187,10 @@ def playlist_dl():
 
     if pl_dl_choix =='2':
         playlist_dl_clip_audio()
+    else:
+        print("Error - Return to main page")
+        time.sleep(2)
+        main()
 
 
 def playlist_dl_audio():
